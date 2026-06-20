@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Francisco Rodríguez</title>
+    <style>
+        /* --- ESTILOS GENERALES (Estructura Limpia) --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.7;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: #222;
+            background-color: #fafafa;
+        }
+
+        /* --- MENÚ DE NAVEGACIÓN --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+        header h2 {
+            margin: 0;
+            font-size: 1.3em;
+        }
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #0066cc;
+            font-weight: 500;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- CUERPO PRINCIPAL --- */
+        main {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        h1 {
+            font-size: 2.2em;
+            color: #111;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+        h3 {
+            font-size: 1.3em;
+            color: #111;
+            border-left: 4px solid #0066cc;
+            padding-left: 10px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        p {
+            text-align: justify;
+        }
+
+        /* --- BLOQUES DE INFORMACIÓN --- */
+        .block-item {
+            background: #f9f9f9;
+            border: 1px solid #f0f0f0;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        .block-item h4 {
+            margin: 0 0 8px 0;
+            color: #111;
+        }
+
+        /* --- BOTONES ENLACES REQUERIDOS --- */
+        .btn-link {
+            display: inline-block;
+            background-color: #0077b5;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        .btn-link:hover {
+            background-color: #005582;
+        }
+        .web-link {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .web-link:hover {
+            text-decoration: underline;
+        }
+
+        /* --- PIE DE PÁGINA --- */
+        footer {
+            margin-top: 60px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2><strong>francisco-rodriguez</strong></h2>
+        <nav>
+            <a href="#perfil">Sobre Mí</a>
+            <a href="#cursos">Cursos</a>
+            <a href="#companeros">Compañeros</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="perfil">
+            <h1>Francisco Rodríguez Rodríguez</h1>
+            <p class="subtitle">Estudiante Universitario de Pregrado</p>
+            <p>
+                [Me llamo Francisco Javier Rodriguez Rodriguez y soy un estudiante de primer año de la carrera de Ciencia de la Computación en la Universidad Católica San Pablo, con un sólido interés en el desarrollo de software y la resolución de problemas lógicos. Actualmente, cuento con competencias técnicas en lenguajes de programación como Python y PHP. Me apasionan áreas como la algoritmia, el desarrollo web y los fundamentos de la computación. Mi meta profesional a mediano plazo es consolidar mis habilidades técnicas, participar en proyectos de desarrollo de código abierto y especializarme en el diseño de soluciones tecnológicas eficientes que aporten valor al sector informático.].
+            </p>
+            <p>
+                <a href="https://www.linkedin.com/in/TU_LINKEDIN" target="_blank" class="btn-link">Mi perfil de LinkedIn</a>
+            </p>
+        </section>
+
+        <section id="cursos">
+            <h3>Información Académica y Cursos actuales</h3>
+            
+            <div class="block-item">
+                <h4>Asignatura 1: [Escribe aquí el nombre de la materia 1]</h4>
+                <p><strong>Profesor(a):</strong> [Escribe el nombre del docente de la materia 1]</p>
+                <a href="https://www.linkedin.com/in/LINK_PROFESOR_1" target="_blank" class="btn-link">LinkedIn del Profesor</a>
+            </div>
+
+            <div class="block-item">
+                <h4>Asignatura 2: [Escribe aquí el nombre de la materia 2]</h4>
+                <p><strong>Profesor(a):</strong> [Escribe el nombre del docente de la materia 2]</p>
+                <a href="https://www.linkedin.com/in/LINK_PROFESOR_2" target="_blank" class="btn-link">LinkedIn del Profesor</a>
+            </div>
+        </section>
+
+        <section id="companeros">
+            <h3>Páginas Web de Compañeros</h3>
+            <p>Portafolios activos y repositorios de los integrantes de mi sección:</p>
+            <ul>
+                <li>
+                    <strong>[Nombre de tu Compañero 1]:</strong> 
+                    <a href="https://usuario-companero1.github.io" target="_blank" class="web-link">Visitar Sitio Web</a>
+                </li>
+                <li>
+                    <strong>[Nombre de tu Compañero 2]:</strong> 
+                    <a href="https://usuario-companero2.github.io" target="_blank" class="web-link">Visitar Sitio Web</a>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Francisco Rodríguez. Portafolio desarrollado bajo estándares semánticos de HTML5.</p>
+    </footer>
+
+</body>
+</html>
