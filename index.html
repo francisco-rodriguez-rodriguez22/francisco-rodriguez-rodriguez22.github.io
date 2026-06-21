@@ -5,119 +5,188 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio de Francisco Rodríguez</title>
     <style>
-        /* --- ESTILOS GENERALES (Estructura Limpia) --- */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1.7;
-            max-width: 750px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            color: #222;
-            background-color: #fafafa;
+        /* --- VARIABLES DE COLOR (Estilo Moderno e Impecable) --- */
+        :root {
+            --bg-principal: #f8fafc;
+            --bg-tarjeta: #ffffff;
+            --texto-oscuro: #1e293b;
+            --texto-mutado: #64748b;
+            --color-acento: #3b82f6;
+            --color-acento-hover: #2563eb;
+            --borde-suave: #e2e8f0;
+            --sombra-tarjeta: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
         }
 
-        /* --- MENÚ DE NAVEGACIÓN --- */
+        /* --- ESTILOS GENERALES --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            color: var(--texto-oscuro);
+            background-color: var(--bg-principal);
+        }
+
+        /* --- MENÚ DE NAVEGACIÓN (Estilo Guimi) --- */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 20px;
-            margin-bottom: 40px;
+            border-bottom: 1px solid var(--borde-suave);
+            padding-bottom: 24px;
+            margin-bottom: 50px;
         }
         header h2 {
             margin: 0;
-            font-size: 1.3em;
+            font-size: 1.25em;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--texto-oscuro);
         }
         nav a {
-            margin-left: 20px;
+            margin-left: 24px;
             text-decoration: none;
-            color: #0066cc;
-            font-weight: 500;
+            color: var(--texto-mutated);
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: color 0.2s ease;
         }
         nav a:hover {
-            text-decoration: underline;
+            color: var(--color-acento);
         }
 
         /* --- CUERPO PRINCIPAL --- */
         main {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            border: 1px solid #eee;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            background: var(--bg-tarjeta);
+            padding: 45px;
+            border-radius: 16px;
+            border: 1px solid var(--borde-suave);
+            box-shadow: var(--sombra-tarjeta);
         }
         section {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
+        section:last-of-type {
+            margin-bottom: 10px;
+        }
+        
+        /* --- TITULARES --- */
         h1 {
-            font-size: 2.2em;
-            color: #111;
-            margin-bottom: 5px;
+            font-size: 2.5em;
+            color: var(--texto-oscuro);
+            margin-bottom: 6px;
+            letter-spacing: -1px;
+            font-weight: 800;
         }
         .subtitle {
-            color: #666;
-            font-size: 1.1em;
+            color: var(--color-acento);
+            font-size: 1.15em;
             margin-top: 0;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
+            font-weight: 600;
+            letter-spacing: -0.2px;
         }
         h3 {
-            font-size: 1.3em;
-            color: #111;
-            border-left: 4px solid #0066cc;
-            padding-left: 10px;
-            margin-top: 30px;
-            margin-bottom: 20px;
+            font-size: 1.4em;
+            color: var(--texto-oscuro);
+            border-left: 4px solid var(--color-acento);
+            padding-left: 14px;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
         }
         p {
             text-align: justify;
+            color: #334155;
+            font-size: 1.05em;
         }
 
-        /* --- BLOQUES DE INFORMACIÓN --- */
+        /* --- TARJETAS DE INFORMACIÓN (Cursos) --- */
         .block-item {
-            background: #f9f9f9;
-            border: 1px solid #f0f0f0;
-            padding: 15px;
-            border-radius: 6px;
-            margin-bottom: 15px;
+            background: #f1f5f9;
+            border: 1px solid var(--borde-suave);
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .block-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
         }
         .block-item h4 {
-            margin: 0 0 8px 0;
-            color: #111;
+            margin: 0 0 10px 0;
+            color: var(--texto-oscuro);
+            font-size: 1.15em;
+            font-weight: 700;
+        }
+        .block-item p {
+            margin: 0 0 16px 0;
+            font-size: 0.95em;
+            color: var(--texto-mutado);
         }
 
-        /* --- BOTONES ENLACES REQUERIDOS --- */
+        /* --- LISTAS DE COMPAÑEROS --- */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        ul li {
+            background: var(--bg-tarjeta);
+            border: 1px solid var(--borde-suave);
+            padding: 16px 20px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        ul li strong {
+            color: var(--texto-oscuro);
+            font-size: 1em;
+        }
+
+        /* --- BOTONES Y ENLACES --- */
         .btn-link {
             display: inline-block;
-            background-color: #0077b5;
+            background-color: var(--color-acento);
             color: white;
-            padding: 5px 12px;
-            border-radius: 4px;
-            font-size: 0.85em;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 0.9em;
             text-decoration: none;
-            font-weight: bold;
-            margin-top: 5px;
+            font-weight: 600;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 4px rgba(59, 130, 246, 0.15);
         }
         .btn-link:hover {
-            background-color: #005582;
+            background-color: var(--color-acento-hover);
+            box-shadow: 0 4px 6px rgba(59, 130, 246, 0.25);
         }
         .web-link {
-            color: #0066cc;
+            color: var(--color-acento);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 0.95em;
+            border-bottom: 1px dashed transparent;
+            transition: border-color 0.2s ease;
         }
         .web-link:hover {
-            text-decoration: underline;
+            border-color: var(--color-acento);
         }
 
         /* --- PIE DE PÁGINA --- */
         footer {
             margin-top: 60px;
-            border-top: 1px solid #eee;
-            padding-top: 20px;
+            border-top: 1px solid var(--borde-suave);
+            padding-top: 25px;
             text-align: center;
             font-size: 0.9em;
-            color: #777;
+            color: var(--texto-mutado);
         }
     </style>
 </head>
@@ -137,9 +206,9 @@
             <h1>Francisco Rodríguez Rodríguez</h1>
             <p class="subtitle">Estudiante Universitario de Pregrado</p>
             <p>
-                [Me llamo Francisco Javier Rodriguez Rodriguez y soy un estudiante de primer año de la carrera de Ciencia de la Computación en la Universidad Católica San Pablo, con un sólido interés en el desarrollo de software y la resolución de problemas lógicos. Actualmente, cuento con competencias técnicas en lenguajes de programación como Python y PHP. Me apasionan áreas como la algoritmia, el desarrollo web y los fundamentos de la computación. Mi meta profesional a mediano plazo es consolidar mis habilidades técnicas, participar en proyectos de desarrollo de código abierto y especializarme en el diseño de soluciones tecnológicas eficientes que aporten valor al sector informático.].
+                Me llamo Francisco Javier Rodriguez Rodriguez y soy un estudiante de primer año de la carrera de Ciencia de la Computación en la Universidad Católica San Pablo, con un sólido interés en el desarrollo de software y la resolución de problemas lógicos. Actualmente, cuento con competencias técnicas en lenguajes de programación como Python y PHP. Me apasionan áreas como la algoritmia, el desarrollo web y los fundamentos de la computación. Mi meta profesional a mediano plazo es consolidar mis habilidades técnicas, participar en proyectos de desarrollo de código abierto y especializarme en el diseño de soluciones tecnológicas eficientes que aporten valor al sector informático.
             </p>
-            <p>
+            <p style="margin-top: 25px;">
                 <a href="https://www.linkedin.com/in/TU_LINKEDIN" target="_blank" class="btn-link">Mi perfil de LinkedIn</a>
             </p>
         </section>
@@ -162,15 +231,15 @@
 
         <section id="companeros">
             <h3>Páginas Web de Compañeros</h3>
-            <p>Portafolios activos y repositorios de los integrantes de mi sección:</p>
+            <p style="margin-bottom: 20px;">Portafolios activos y repositorios de los integrantes de mi sección:</p>
             <ul>
                 <li>
-                    <strong>[Nombre de tu Compañero 1]:</strong> 
-                    <a href="https://usuario-companero1.github.io" target="_blank" class="web-link">Visitar Sitio Web</a>
+                    <strong>[Nombre de tu Compañero 1]</strong> 
+                    <a href="https://usuario-companero1.github.io" target="_blank" class="web-link">Visitar Sitio Web →</a>
                 </li>
                 <li>
-                    <strong>[Nombre de tu Compañero 2]:</strong> 
-                    <a href="https://usuario-companero2.github.io" target="_blank" class="web-link">Visitar Sitio Web</a>
+                    <strong>[Nombre de tu Compañero 2]</strong> 
+                    <a href="https://usuario-companero2.github.io" target="_blank" class="web-link">Visitar Sitio Web →</a>
                 </li>
             </ul>
         </section>
