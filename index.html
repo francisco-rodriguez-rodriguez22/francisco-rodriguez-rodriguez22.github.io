@@ -3,708 +3,648 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Francisco Rodríguez - Portafolio</title>
-  <meta name="description" content="Hola soy Francisco Javier Rodríguez Rodríguez, estudiante de Ciencia de la Computación en la UCSP Arequipa. Esta es mi página personal con mis proyectos y habilidades." />
+  <title>Francisco Rodríguez — Portafolio</title>
+  <meta name="description" content="Francisco Javier Rodríguez Rodríguez, estudiante de Ciencia de la Computación en la UCSP, Arequipa. Portafolio personal." />
   <meta name="author" content="Francisco Rodríguez" />
   <meta name="keywords" content="Francisco Rodríguez Rodríguez, UCSP, Arequipa, Ciencia de la Computacion, python, php, programacion" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --bg: #0c0f14;
+      --bg-raised: #12161d;
+      --bg-raised-2: #161b23;
+      --line: #232a35;
+      --ink: #dcd7c9;
+      --ink-dim: #7a8190;
+      --ink-faint: #4b515e;
+      --accent: #e7a33d;
+      --accent-soft: rgba(231, 163, 61, 0.12);
+      --accent-soft-2: rgba(231, 163, 61, 0.28);
+      --teal: #5f9e93;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'IBM Plex Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
     }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      background-color: #0d0d1a;
-      color: #e0e0e0;
-      font-family: 'Poppins', Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
       font-size: 15px;
+      line-height: 1.6;
     }
 
-    /* navbar */
-    nav {
-      background-color: #111128;
-      padding: 15px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    a { color: inherit; }
+
+    /* sidebar + content layout */
+
+    .shell {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      min-height: 100vh;
+    }
+
+    .sidebar {
       position: sticky;
       top: 0;
-      border-bottom: 2px solid #7c3aed;
-      z-index: 99;
+      height: 100vh;
+      background-color: var(--bg-raised);
+      border-right: 1px solid var(--line);
+      padding: 26px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 34px;
     }
 
-    nav .logo {
-      font-size: 1.3em;
-      font-weight: 700;
-      color: #a78bfa;
+    .sb-brand {
+      font-family: var(--font-mono);
+      font-size: 0.85em;
+      color: var(--accent);
     }
 
-    nav ul {
+    .sb-nav {
       list-style: none;
       display: flex;
-      gap: 25px;
+      flex-direction: column;
+      gap: 2px;
+      font-family: var(--font-mono);
+      font-size: 0.78em;
     }
 
-    nav ul a {
-      color: #cccccc;
+    .sb-nav a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       text-decoration: none;
-      font-size: 0.9em;
-      transition: color 0.2s;
+      color: var(--ink-dim);
+      padding: 9px 10px;
+      border-radius: 5px;
     }
 
-    nav ul a:hover {
-      color: #a78bfa;
+    .sb-nav a:hover {
+      color: var(--ink);
+      background-color: var(--bg-raised-2);
     }
 
-    /* hero */
-    .hero {
-      min-height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 60px 20px;
-      background: radial-gradient(ellipse at center, #1a0a3a 0%, #0d0d1a 70%);
+    .sb-nav .ext { color: var(--ink-faint); }
+    .sb-nav a:hover .ext { color: var(--accent); }
+
+    .content {
+      min-width: 0;
     }
 
-    .hero-content {
-      max-width: 650px;
+    /* mobile top tab bar (hidden on desktop) */
+    .mobile-tabs {
+      display: none;
     }
 
-    .avatar {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #7c3aed, #a78bfa);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3em;
-      margin: 0 auto 25px auto;
-      border: 3px solid #a78bfa;
+    /* shared section scaffolding */
+
+    .blk {
+      position: relative;
+      padding: 64px 56px;
+      max-width: 980px;
+      border-bottom: 1px solid var(--line);
     }
 
-    .hero h1 {
-      font-size: 2.6em;
-      font-weight: 700;
-      color: #ffffff;
-      line-height: 1.2;
-      margin-bottom: 12px;
+    .blk-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72em;
+      color: var(--accent);
+      background-color: var(--accent-soft);
+      border: 1px solid var(--accent-soft-2);
+      padding: 3px 10px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 18px;
     }
 
-    .hero h1 span {
-      color: #a78bfa;
-    }
-
-    .hero .subtitulo {
-      color: #9999bb;
-      font-size: 1em;
+    .blk h2 {
+      font-family: var(--font-display);
+      font-size: 1.7em;
+      font-weight: 600;
+      color: #fff;
       margin-bottom: 8px;
     }
 
-    .hero .frase {
-      color: #7777aa;
+    .blk-desc {
+      color: var(--ink-dim);
       font-size: 0.9em;
+      margin-bottom: 36px;
+      max-width: 560px;
+    }
+
+    /* hero */
+
+    .hero {
+      padding: 70px 56px 60px 56px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 2.5em;
+      color: #fff;
+      line-height: 1.15;
+    }
+
+    .hero h1 .accent-text { color: var(--accent); }
+
+    .hero .role-line {
+      font-family: var(--font-mono);
+      color: var(--ink-dim);
+      font-size: 0.92em;
+      margin-top: 18px;
+    }
+
+    .hero .role-line .car { color: var(--teal); }
+
+    .hero .quote {
+      color: var(--ink-faint);
+      font-size: 0.85em;
       font-style: italic;
-      margin-bottom: 30px;
+      margin-top: 14px;
+      max-width: 480px;
     }
 
     .hero-btns {
       display: flex;
-      gap: 15px;
-      justify-content: center;
+      gap: 14px;
+      margin-top: 34px;
       flex-wrap: wrap;
     }
 
     .btn {
-      padding: 10px 25px;
+      padding: 11px 22px;
       border-radius: 6px;
-      font-size: 0.9em;
-      font-weight: 600;
+      font-family: var(--font-mono);
+      font-size: 0.82em;
+      font-weight: 500;
       text-decoration: none;
-      transition: transform 0.15s, opacity 0.15s;
       display: inline-block;
-      border: none;
+      border: 1px solid transparent;
       cursor: pointer;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      opacity: 0.9;
+    .btn-fill {
+      background-color: var(--accent);
+      color: #14110a;
+      font-weight: 600;
     }
 
-    .btn-morado {
-      background-color: #7c3aed;
-      color: white;
-    }
+    .btn-fill:hover { opacity: 0.88; }
 
-    .btn-outline {
-      border: 1.5px solid #7c3aed;
-      color: #a78bfa;
+    .btn-line {
+      border-color: var(--line);
+      color: var(--ink);
       background: transparent;
     }
 
-    /* secciones generales */
-    section {
-      padding: 60px 40px;
-      max-width: 950px;
-      margin: 0 auto;
-    }
-
-    .section-titulo {
-      font-size: 1.6em;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 8px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid #7c3aed;
-      display: inline-block;
-    }
-
-    .section-desc {
-      color: #8888aa;
-      font-size: 0.88em;
-      margin-top: 6px;
-      margin-bottom: 30px;
-    }
+    .btn-line:hover { border-color: var(--accent-soft-2); color: var(--accent); }
 
     /* sobre mi */
-    .sobre-grid {
+
+    .about-wrap {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 36px;
       align-items: start;
     }
 
-    .sobre-texto p {
-      color: #bbbbcc;
-      line-height: 1.9;
-      margin-bottom: 14px;
+    .about-text p {
+      color: #c4c0b3;
       font-size: 0.93em;
+      margin-bottom: 16px;
     }
 
-    .datos-rapidos {
-      background-color: #111128;
-      border-radius: 10px;
-      padding: 25px;
-      border: 1px solid #2a2a4a;
-    }
+    .about-text strong { color: #fff; font-weight: 600; }
 
-    .datos-rapidos h3 {
-      color: #a78bfa;
-      font-size: 0.95em;
-      margin-bottom: 18px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
+    .interests-row { margin-top: 6px; }
 
-    .dato-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 14px;
-      font-size: 0.88em;
-    }
-
-    .dato-item .icono {
-      font-size: 1.1em;
-      margin-top: 1px;
-    }
-
-    .dato-item .label {
-      color: #666688;
+    .interests-label {
+      font-family: var(--font-mono);
+      font-size: 0.72em;
+      color: var(--ink-faint);
       display: block;
-      font-size: 0.8em;
+      margin-bottom: 10px;
     }
 
-    .dato-item .valor {
-      color: #ccccdd;
+    .tag-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .tag-pill {
+      font-family: var(--font-mono);
+      font-size: 0.78em;
+      color: var(--ink);
+      background-color: var(--bg-raised);
+      border: 1px solid var(--line);
+      padding: 6px 13px;
+      border-radius: 20px;
     }
 
-    /* habilidades */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 14px;
-    }
-
-    .skill-card {
-      background-color: #111128;
-      border: 1px solid #2a2a4a;
-      border-radius: 10px;
-      padding: 18px;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-
-    .skill-card:hover {
-      border-color: #7c3aed;
-      transform: translateY(-3px);
-    }
-
-    .skill-card .skill-icon {
-      font-size: 1.8em;
-      margin-bottom: 8px;
-      display: block;
-    }
-
-    .skill-card .skill-nombre {
-      font-weight: 600;
-      font-size: 0.9em;
-      color: #e0e0e0;
-      margin-bottom: 4px;
-    }
-
-    .skill-card .skill-nivel {
-      font-size: 0.75em;
-      color: #666688;
-    }
-
-    .barra-fondo {
-      height: 4px;
-      background-color: #2a2a4a;
-      border-radius: 4px;
-      margin-top: 10px;
+    .meta-card {
+      background-color: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: 8px;
       overflow: hidden;
     }
 
-    .barra-relleno {
-      height: 100%;
-      background: linear-gradient(90deg, #7c3aed, #a78bfa);
-      border-radius: 4px;
+    .meta-card .mc-head {
+      font-family: var(--font-mono);
+      font-size: 0.72em;
+      color: var(--ink-faint);
+      padding: 11px 16px;
+      border-bottom: 1px solid var(--line);
+      background-color: var(--bg-raised-2);
+    }
+
+    .mc-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.85em;
+    }
+
+    .mc-row:last-child { border-bottom: none; }
+
+    .mc-row .k {
+      font-family: var(--font-mono);
+      color: var(--ink-faint);
+      font-size: 0.85em;
+    }
+
+    .mc-row .v { color: var(--ink); text-align: right; }
+
+    /* habilidades */
+
+    .skills-list {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      max-width: 640px;
+    }
+
+    .skill-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 18px;
+      border-bottom: 1px solid var(--line);
+      background-color: var(--bg-raised);
+      font-size: 0.85em;
+    }
+
+    .skill-row:last-child { border-bottom: none; }
+
+    .skill-row .skname { color: var(--ink); font-weight: 500; }
+
+    .skill-row .skpct {
+      font-family: var(--font-mono);
+      color: var(--ink-faint);
+      font-size: 0.85em;
     }
 
     /* proyectos */
-    .proyectos-grid {
+
+    .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
     }
 
-    .proyecto-card {
-      background-color: #111128;
-      border: 1px solid #2a2a4a;
-      border-radius: 10px;
-      padding: 22px;
-      transition: border-color 0.2s, transform 0.2s;
-      position: relative;
+    .project-card {
+      background-color: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: 20px;
     }
 
-    .proyecto-card:hover {
-      border-color: #7c3aed;
-      transform: translateY(-4px);
-    }
+    .project-card .ck { font-family: var(--font-mono); font-size: 0.7em; color: var(--ink-faint); display: block; margin-bottom: 8px; }
+    .project-card h3 { font-family: var(--font-display); color: #fff; font-size: 1.02em; margin-bottom: 10px; }
+    .project-card p { color: var(--ink-dim); font-size: 0.85em; margin-bottom: 14px; }
 
-    .proyecto-card .tag {
+    .ptags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .ptag {
+      font-family: var(--font-mono);
       font-size: 0.72em;
-      color: #a78bfa;
-      background-color: rgba(124, 58, 237, 0.15);
+      color: var(--ink-dim);
+      background-color: var(--bg-raised-2);
+      border: 1px solid var(--line);
       padding: 3px 10px;
-      border-radius: 20px;
-      display: inline-block;
-      margin-bottom: 12px;
-      font-weight: 600;
-    }
-
-    .proyecto-card h3 {
-      color: #ffffff;
-      font-size: 1em;
-      margin-bottom: 8px;
-    }
-
-    .proyecto-card p {
-      color: #8888aa;
-      font-size: 0.83em;
-      line-height: 1.7;
-      margin-bottom: 14px;
-    }
-
-    .techs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .tech {
-      font-size: 0.72em;
-      color: #9999bb;
-      background-color: #1a1a35;
-      border: 1px solid #2a2a4a;
-      padding: 2px 9px;
       border-radius: 20px;
     }
 
     /* companeros */
-    .companeros-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
+
+    .dir-listing {
+      font-family: var(--font-mono);
+      font-size: 0.88em;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
     }
 
-    .companero-card {
-      background-color: #111128;
-      border: 1px solid #2a2a4a;
-      border-radius: 10px;
-      padding: 20px 25px;
-      text-align: center;
-      text-decoration: none;
-      color: #e0e0e0;
-      transition: border-color 0.2s, transform 0.2s;
-      min-width: 170px;
-    }
-
-    .companero-card:hover {
-      border-color: #7c3aed;
-      transform: translateY(-3px);
-    }
-
-    .companero-inicial {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+    .dir-row {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 1.1em;
-      font-weight: 700;
-      margin: 0 auto 10px auto;
-      color: white;
+      gap: 14px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--line);
+      text-decoration: none;
+      color: var(--ink);
     }
 
-    .companero-card .comp-nombre {
-      font-size: 0.85em;
-      font-weight: 600;
-      color: #ddddee;
-      margin-bottom: 3px;
-    }
+    .dir-row:last-child { border-bottom: none; }
+    .dir-row:hover { background-color: var(--bg-raised); }
 
-    .companero-card .comp-link {
-      font-size: 0.75em;
-      color: #a78bfa;
-    }
+    .dir-row .dir-name { flex: 1; }
+    .dir-row .dir-go { color: var(--ink-faint); }
+    .dir-row:hover .dir-go { color: var(--accent); }
 
     /* contacto */
-    .contacto-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
+
+    .contact-wrap {
+      max-width: 480px;
     }
 
-    .contacto-info p {
-      color: #8888aa;
-      font-size: 0.88em;
-      line-height: 1.8;
-      margin-bottom: 20px;
+    .contact-info p {
+      color: var(--ink-dim);
+      font-size: 0.9em;
+      margin-bottom: 22px;
+      max-width: 380px;
     }
 
-    .contacto-links {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .clinks { display: flex; flex-direction: column; gap: 10px; }
 
-    .contacto-link {
+    .clink {
       display: flex;
       align-items: center;
       gap: 12px;
-      background-color: #111128;
-      border: 1px solid #2a2a4a;
-      border-radius: 8px;
-      padding: 12px 16px;
+      background-color: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 13px 16px;
       text-decoration: none;
-      color: #ccccdd;
+      color: var(--ink);
       font-size: 0.87em;
-      transition: border-color 0.2s;
     }
 
-    .contacto-link:hover {
-      border-color: #7c3aed;
-    }
-
-    .contacto-link .link-icono {
-      font-size: 1.2em;
-    }
-
-    .contacto-link .link-label {
-      font-size: 0.75em;
-      color: #555577;
-      display: block;
-    }
-
-    /* formulario */
-    .formulario {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .formulario input,
-    .formulario textarea {
-      background-color: #111128;
-      border: 1px solid #2a2a4a;
-      border-radius: 8px;
-      padding: 11px 14px;
-      color: #e0e0e0;
-      font-family: 'Poppins', Arial, sans-serif;
-      font-size: 0.87em;
-      outline: none;
-      transition: border-color 0.2s;
-      resize: vertical;
-    }
-
-    .formulario input:focus,
-    .formulario textarea:focus {
-      border-color: #7c3aed;
-    }
-
-    .formulario input::placeholder,
-    .formulario textarea::placeholder {
-      color: #444466;
-    }
+    .clink:hover { border-color: var(--accent-soft-2); }
+    .clink .clabel { font-family: var(--font-mono); font-size: 0.74em; color: var(--ink-faint); display: block; }
 
     /* footer */
+
     footer {
-      background-color: #111128;
-      border-top: 1px solid #2a2a4a;
-      text-align: center;
-      padding: 30px 20px;
-      margin-top: 40px;
-      color: #555577;
-      font-size: 0.82em;
+      padding: 30px 56px;
+      font-family: var(--font-mono);
+      font-size: 0.76em;
+      color: var(--ink-faint);
     }
 
-    footer strong {
-      color: #a78bfa;
-    }
+    /* responsive */
 
-    /* separador entre secciones */
-    .separador {
-      border: none;
-      border-top: 1px solid #1e1e35;
-      max-width: 950px;
-      margin: 0 auto;
-    }
+    @media (max-width: 860px) {
+      .shell { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
 
-    @media (max-width: 700px) {
-      .sobre-grid, .contacto-grid { grid-template-columns: 1fr; }
-      nav ul { display: none; }
+      .mobile-tabs {
+        display: flex;
+        gap: 4px;
+        overflow-x: auto;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background-color: var(--bg-raised);
+        border-bottom: 1px solid var(--line);
+        padding: 12px 16px;
+        font-family: var(--font-mono);
+        font-size: 0.72em;
+      }
+
+      .mobile-tabs a {
+        white-space: nowrap;
+        color: var(--ink-dim);
+        text-decoration: none;
+        padding: 7px 12px;
+        border: 1px solid var(--line);
+        border-radius: 5px;
+      }
+
+      .about-wrap, .contact-wrap { grid-template-columns: 1fr; }
+      .blk, .hero { padding: 48px 22px; }
       .hero h1 { font-size: 1.9em; }
-      section { padding: 40px 20px; }
+      footer { padding: 26px 22px; }
     }
 
   </style>
 </head>
 <body>
 
-  <nav>
-    <div class="logo">FRR</div>
-    <ul>
-      <li><a href="#sobre-mi">Sobre mí</a></li>
-      <li><a href="#habilidades">Habilidades</a></li>
-      <li><a href="#cursos">Cursos</a></li>
-      <li><a href="#companeros">Compañeros</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </nav>
-
-  <div class="hero">
-    <div class="hero-content">
-      <div class="avatar">🧑‍💻</div>
-      <h1>Francisco<br><span>Rodríguez Rodríguez</span></h1>
-      <p class="subtitulo">Estudiante de Ciencia de la Computación · UCSP</p>
-      <p class="frase">"Diseñando el futuro a través de algoritmos, líneas de código y lógica"</p>
-      <div class="hero-btns">
-        <a href="#cursos" class="btn btn-morado">Ver Cursos</a>
-        <a href="#contacto" class="btn btn-outline">Contactarme</a>
-      </div>
-    </div>
+  <div class="mobile-tabs">
+    <a href="#sobre-mi">01_sobre-mi</a>
+    <a href="#habilidades">02_habilidades</a>
+    <a href="#proyectos">03_proyectos</a>
+    <a href="#companeros">04_companeros</a>
+    <a href="#contacto">05_contacto</a>
   </div>
 
-  <hr class="separador">
+  <div class="shell">
 
-  <section id="sobre-mi">
-    <div class="section-titulo">Sobre mí</div>
-    <p class="section-desc">Un poco de quién soy y cuáles son mis objetivos</p>
-    <div class="sobre-grid">
-      <div class="sobre-texto">
-        <p>
-          Me llamo <strong>Francisco Javier Rodríguez Rodríguez</strong> y soy un estudiante de primer año de la carrera de <strong>Ciencia de la Computación</strong> en la Universidad Católica San Pablo, con un sólido interés en el desarrollo de software y la resolución de problemas lógicos.
-        </p>
-        <p>
-          Me apasionan profundamente áreas críticas como la algoritmia básica, el desarrollo web y los fundamentos conceptuales de la computación. Me considero una persona enfocada y analítica; cuando un problema o código presenta dificultades, disfruto de la perseverancia necesaria para encontrar fallos y optimizar el rendimiento de las funciones.
-        </p>
-        <p>
-          Mi meta profesional a mediano plazo es consolidar firmemente mis habilidades tecnológicas globales, participar de forma proactiva en proyectos de desarrollo de código abierto y especializarme en el diseño de soluciones eficientes que aporten valor real al sector informático.
-        </p>
-      </div>
-      <div class="datos-rapidos">
-        <h3>📋 Datos rápidos</h3>
-        <div class="dato-item">
-          <span class="icono">🎓</span>
-          <div>
-            <span class="label">Universidad</span>
-            <span class="valor">UCSP — Arequipa</span>
-          </div>
-        </div>
-        <div class="dato-item">
-          <span class="icono">📚</span>
-          <div>
-            <span class="label">Carrera</span>
-            <span class="valor">Ciencia de la Computación</span>
-          </div>
-        </div>
-        <div class="dato-item">
-          <span class="icono">📍</span>
-          <div>
-            <span class="label">Ciudad</span>
-            <span class="valor">Arequipa, Perú</span>
-          </div>
-        </div>
-        <div class="dato-item">
-          <span class="icono">🐍</span>
-          <div>
-            <span class="label">Lenguajes favoritos</span>
-            <span class="valor">Python & PHP</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <aside class="sidebar">
+      <div class="sb-brand">francisco portafolio</div>
 
-  <hr class="separador">
+      <ul class="sb-nav">
+        <li><a href="#sobre-mi"><span class="ext">01</span> sobre-mi</a></li>
+        <li><a href="#habilidades"><span class="ext">02</span> habilidades</a></li>
+        <li><a href="#proyectos"><span class="ext">03</span> proyectos</a></li>
+        <li><a href="#companeros"><span class="ext">04</span> companeros</a></li>
+        <li><a href="#contacto"><span class="ext">05</span> contacto</a></li>
+      </ul>
+    </aside>
 
-  <section id="habilidades">
-    <div class="section-titulo">💻 Habilidades</div>
-    <p class="section-desc">Tecnologías y conceptos que manejo y estoy desarrollando</p>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <span class="skill-icon">🐍</span>
-        <div class="skill-nombre">Python</div>
-        <div class="skill-nivel">Básico - Intermedio</div>
-        <div class="barra-fondo"><div class="barra-relleno" style="width: 60%"></div></div>
-      </div>
-      <div class="skill-card">
-        <span class="skill-icon">🐘</span>
-        <div class="skill-nombre">PHP</div>
-        <div class="skill-nivel">Básico</div>
-        <div class="barra-fondo"><div class="barra-relleno" style="width: 40%"></div></div>
-      </div>
-      <div class="skill-card">
-        <span class="skill-icon">🧠</span>
-        <div class="skill-nombre">Algoritmia</div>
-        <div class="skill-nivel">Básico</div>
-        <div class="barra-fondo"><div class="barra-relleno" style="width: 50%"></div></div>
-      </div>
-      <div class="skill-card">
-        <span class="skill-icon">🌐</span>
-        <div class="skill-nombre">HTML5 / CSS3</div>
-        <div class="skill-nivel">Básico - Intermedio</div>
-        <div class="barra-fondo"><div class="barra-relleno" style="width: 55%"></div></div>
-      </div>
-    </div>
-  </section>
+    <div class="content">
 
-  <hr class="separador">
-
-  <section id="cursos">
-    <div class="section-titulo">🛠️ Cursos y Asignaturas</div>
-    <p class="section-desc">Información académica sobre mis asignaturas y docentes actuales</p>
-    <div class="proyectos-grid">
-
-      <div class="proyecto-card">
-        <span class="tag">Asignatura 1</span>
-        <h3>📚 [Materia 1]</h3>
-        <p><strong>Profesor(a):</strong> [Nombre del docente de la materia 1]</p>
-        <div class="techs" style="margin-top: 15px;">
-          <a href="https://www.linkedin.com/in/LINK_PROFESOR_1" target="_blank" style="color: #a78bfa; text-decoration: none; font-size: 0.85em; font-weight: 600;">LinkedIn del Profesor →</a>
+      <div class="hero">
+        <h1>Francisco Javier<br><span class="accent-text">Rodríguez Rodríguez</span></h1>
+        <p class="role-line"><span class="car">&gt;</span> Estudiante de Ciencia de la Computación · UCSP · 1er ciclo</p>
+        <p class="quote">"Diseñando el futuro a través de algoritmos, líneas de código y lógica"</p>
+        <div class="hero-btns">
+          <a href="#proyectos" class="btn btn-fill">Ver proyectos →</a>
+          <a href="#contacto" class="btn btn-line">Contactarme</a>
         </div>
       </div>
 
-      <div class="proyecto-card">
-        <span class="tag">Asignatura 2</span>
-        <h3>📚 [Materia 2]</h3>
-        <p><strong>Profesor(a):</strong> [Nombre del docente de la materia 2]</p>
-        <div class="techs" style="margin-top: 15px;">
-          <a href="https://www.linkedin.com/in/LINK_PROFESOR_2" target="_blank" style="color: #a78bfa; text-decoration: none; font-size: 0.85em; font-weight: 600;">LinkedIn del Profesor →</a>
-        </div>
-      </div>
+      <section id="sobre-mi" class="blk">
+        <span class="blk-tag">01 · sobre-mi</span>
+        <h2>Sobre mí</h2>
+        <p class="blk-desc">Un poco de quién soy y cuáles son mis objetivos.</p>
 
-    </div>
-  </section>
+        <div class="about-wrap">
+          <div class="about-text">
+            <p>
+              Me llamo <strong>Francisco Javier Rodríguez Rodríguez</strong> y soy un estudiante de primer año de la carrera de <strong>Ciencia de la Computación</strong> en la Universidad Católica San Pablo, con un sólido interés en el desarrollo de software y la resolución de problemas lógicos. Estudié mi educación secundaria en el <strong>Colegio San José de Arequipa</strong>.
+            </p>
+            <p>
+              Me apasionan profundamente áreas críticas como la algoritmia básica, el desarrollo web y los fundamentos conceptuales de la computación. Me considero una persona enfocada y analítica; cuando un problema o código presenta dificultades, disfruto de la perseverancia necesaria para encontrar fallos y optimizar el rendimiento de las funciones.
+            </p>
+            <p>
+              Mi meta profesional a mediano plazo es consolidar firmemente mis habilidades tecnológicas globales, participar de forma proactiva en proyectos de desarrollo de código abierto y especializarme en el diseño de soluciones eficientes que aporten valor real al sector informático.
+            </p>
 
-  <hr class="separador">
-
-  <section id="companeros">
-    <div class="section-titulo">👥 Páginas de Compañeros</div>
-    <p class="section-desc">Portafolios activos de otros integrantes de mi sección</p>
-    <div class="companeros-grid">
-
-      <a href="https://guimi-zea.github.io/" target="_blank" class="companero-card">
-        <div class="companero-inicial">GZ</div>
-        <div class="comp-nombre">Guimi Russbel Zea Condori</div>
-        <div class="comp-link">ver página →</div>
-      </a>
-
-      <a href="https://ugovh.github.io/Ivan-Perales-Marroquin/" target="_blank" class="companero-card">
-        <div class="companero-inicial">IP</div>
-        <div class="comp-nombre">Ivan Alipio Perales Marroquín</div>
-        <div class="comp-link">ver página →</div>
-      </a>
-
-    </div>
-  </section>
-
-  <hr class="separador">
-
-  <section id="contacto">
-    <div class="section-titulo">📬 Contacto</div>
-    <p class="section-desc">Canales de comunicación oficiales para consultas o proyectos</p>
-    <div class="contacto-grid">
-      <div class="contacto-info">
-        <p>
-          Puedes contactarme por cualquiera de estos enlaces oficiales o dejar un mensaje rápido mediante el formulario.
-        </p>
-        <div class="contacto-links">
-          <a href="https://github.com/francisco-rodriguez-rodriguez22" target="_blank" class="contacto-link">
-            <span class="link-icono">💻</span>
-            <div>
-              <span class="link-label">GitHub de Código</span>
-              <span>github.com/francisco-rodriguez...</span>
+            <div class="interests-row">
+              <span class="interests-label">intereses</span>
+              <div class="tag-pills">
+                <span class="tag-pill">Desarrollo de software</span>
+                <span class="tag-pill">Ciencia de Datos</span>
+                <span class="tag-pill">Diseño de Videojuegos</span>
+              </div>
             </div>
+          </div>
+
+          <div class="meta-card">
+            <div class="mc-head">datos</div>
+            <div class="mc-row"><span class="k">universidad</span><span class="v">UCSP — Arequipa</span></div>
+            <div class="mc-row"><span class="k">carrera</span><span class="v">Ciencia de la Computación</span></div>
+            <div class="mc-row"><span class="k">ciclo</span><span class="v">1er ciclo</span></div>
+            <div class="mc-row"><span class="k">ciudad</span><span class="v">Arequipa, Perú</span></div>
+            <div class="mc-row"><span class="k">lenguajes</span><span class="v">Python & PHP</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="habilidades" class="blk">
+        <span class="blk-tag">02 · habilidades</span>
+        <h2>Habilidades</h2>
+        <p class="blk-desc">Tecnologías y conceptos que manejo y estoy desarrollando.</p>
+
+        <div class="skills-list">
+          <div class="skill-row">
+            <span class="skname">Python</span>
+            <span class="skpct">60%</span>
+          </div>
+          <div class="skill-row">
+            <span class="skname">PHP</span>
+            <span class="skpct">40%</span>
+          </div>
+          <div class="skill-row">
+            <span class="skname">Algoritmia</span>
+            <span class="skpct">50%</span>
+          </div>
+          <div class="skill-row">
+            <span class="skname">HTML5 / CSS3</span>
+            <span class="skpct">55%</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="proyectos" class="blk">
+        <span class="blk-tag">03 · proyectos</span>
+        <h2>Proyectos</h2>
+        <p class="blk-desc">Proyectos personales en los que vengo practicando y aplicando lo aprendido.</p>
+
+        <div class="projects-grid">
+          <div class="project-card">
+            <span class="ck">proyecto: 01</span>
+            <h3>Sudoku</h3>
+            <p>Juego de sudoku desarrollado en Python, con la lógica de validación de tablero y reglas del juego.</p>
+            <div class="ptags"><span class="ptag">Python</span></div>
+          </div>
+
+          <div class="project-card">
+            <span class="ck">proyecto: 02</span>
+            <h3>Videojuego en Pygame</h3>
+            <p>Videojuego construido con la librería Pygame, tomando repositorios de referencia como base para el desarrollo en Python.</p>
+            <div class="ptags"><span class="ptag">Python</span><span class="ptag">Pygame</span></div>
+          </div>
+
+          <div class="project-card">
+            <span class="ck">proyecto: 03</span>
+            <h3>Página web personal</h3>
+            <p>Este portafolio: mi página web personal para presentar mi perfil académico y mis proyectos.</p>
+            <div class="ptags"><span class="ptag">HTML</span><span class="ptag">CSS</span><span class="ptag">JS</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="companeros" class="blk">
+        <span class="blk-tag">04 · companeros</span>
+        <h2>Páginas de compañeros</h2>
+        <p class="blk-desc">Portafolios activos de otros integrantes de mi sección.</p>
+
+        <div class="dir-listing">
+          <a href="https://nickolasjackmatiuabarcabedregal.github.io/" target="_blank" class="dir-row">
+            <span class="dir-name">Nicolas Abarca</span>
+            <span class="dir-go">abrir →</span>
           </a>
-          <a href="https://linkedin.com/in/TU_LINKEDIN" target="_blank" class="contacto-link">
-            <span class="link-icono">💼</span>
-            <div>
-              <span class="link-label">LinkedIn Profesional</span>
-              <span>linkedin.com/in/tu-perfil</span>
-            </div>
+          <a href="https://eydham-segoviacabrera.github.io/portafolio/" target="_blank" class="dir-row">
+            <span class="dir-name">Eydham Jesus Segovia Cabrera</span>
+            <span class="dir-go">abrir →</span>
           </a>
-          <div class="contacto-link">
-            <span class="link-icono">🎓</span>
-            <div>
-              <span class="link-label">Institución</span>
-              <span>UCSP — Ciencia de la Computación</span>
+          <a href="https://leonarlh24-commits.github.io/" target="_blank" class="dir-row">
+            <span class="dir-name">Yeimy Leonard Hancco Ccorahua</span>
+            <span class="dir-go">abrir →</span>
+          </a>
+          <a href="https://alvaroqu.github.io/" target="_blank" class="dir-row">
+            <span class="dir-name">Alvaro Quispe Fuentes</span>
+            <span class="dir-go">abrir →</span>
+          </a>
+          <a href="https://guimi-zea.github.io/#contacto" target="_blank" class="dir-row">
+            <span class="dir-name">Guimi Russbel Zea Condori</span>
+            <span class="dir-go">abrir →</span>
+          </a>
+          <a href="https://ugovh.github.io/Ivan-Perales-Marroquin/" target="_blank" class="dir-row">
+            <span class="dir-name">Ivan Alipio Perales Marroquín</span>
+            <span class="dir-go">abrir →</span>
+          </a>
+          <a href="https://cdnglm.github.io/" target="_blank" class="dir-row">
+            <span class="dir-name">Ismael Diaz Huillca</span>
+            <span class="dir-go">abrir →</span>
+          </a>
+        </div>
+      </section>
+
+      <section id="contacto" class="blk" style="border-bottom: none;">
+        <span class="blk-tag">05 · contacto</span>
+        <h2>Contacto</h2>
+        <p class="blk-desc">Canales de comunicación oficiales para consultas o proyectos.</p>
+
+        <div class="contact-wrap">
+          <div class="contact-info">
+            <p>Puedes contactarme por cualquiera de estos enlaces oficiales.</p>
+            <div class="clinks">
+              <a href="https://github.com/francisco-rodriguez-rodriguez22" target="_blank" class="clink">
+                <div><span class="clabel">github</span><span>github.com/francisco-rodriguez...</span></div>
+              </a>
+              <a href="https://www.linkedin.com/in/francisco-javier-rodriguez-rodriguez-339513418" target="_blank" class="clink">
+                <div><span class="clabel">linkedin</span><span>linkedin.com/in/francisco-javier-rodriguez...</span></div>
+              </a>
+              <a href="mailto:francisco.rodriguez.rodriguez@ucsp.edu.pe" class="clink">
+                <div><span class="clabel">correo</span><span>francisco.rodriguez.rodriguez@ucsp.edu.pe</span></div>
+              </a>
+              <div class="clink">
+                <div><span class="clabel">institución</span><span>UCSP — Ciencia de la Computación</span></div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <form class="formulario" onsubmit="return false;">
-        <input type="text" placeholder="Tu nombre" />
-        <input type="email" placeholder="Tu correo" />
-        <textarea rows="4" placeholder="Tu mensaje..."></textarea>
-        <button type="submit" class="btn btn-morado">Enviar mensaje</button>
-      </form>
+      <footer>
+        <span>echo por francisco</span>
+      </footer>
+
     </div>
-  </section>
-
-  <footer>
-    <p>Hecho con JavaScript, HTML5 y CSS3 por <strong>Francisco Rodríguez Rodríguez</strong> · UCSP · 2026</p>
-    <p style="margin-top: 6px;">Ciencia de la Computación · Portafolio Académico Personal</p>
-  </footer>
+  </div>
 
 </body>
 </html>
